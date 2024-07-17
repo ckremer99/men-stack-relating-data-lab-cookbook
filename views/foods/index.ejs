@@ -10,5 +10,14 @@
     <p>
       <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
     </p>
+    <% if (pantry.length === 0) { %>
+      <h3>There are no items in this pantry</h3>
+    <% } else { %>
+      <ul>
+        <% pantry.forEach(element => { %>
+          <li><%= element.name %></li>
+        <% }); %>
+      </ul>
+    <% } %>
   </body>
 </html>

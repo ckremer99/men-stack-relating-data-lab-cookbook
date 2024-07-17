@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Page</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>This is the edit page for <%= currentFood.name %></h1>
+    <h1>Edit Food Item</h1>
+    <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=PUT" method="POST">
+        <label for="foodItem">Food Item:</label>
+        <input type="text" name="name" id="foodItem" value="<%= item.name %>" required>
+        <button type="submit">Update Food Item</button>
+    </form>
 </body>
 </html>

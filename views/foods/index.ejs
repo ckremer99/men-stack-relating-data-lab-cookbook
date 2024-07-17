@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Pantry</title>
   </head>
   <body>
@@ -11,13 +11,19 @@
       <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
     </p>
     <% if (pantry.length === 0) { %>
-      <h3>There are no items in this pantry</h3>
+    <h3>There are no items in this pantry</h3>
     <% } else { %>
-      <ul>
-        <% pantry.forEach(element => { %>
-          <li><%= element.name %></li>
-        <% }); %>
-      </ul>
+    <ul>
+      <% pantry.forEach(item => { %>
+      <li><%= item.name %></li>
+      <form
+        action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE"
+        method="POST"
+      >
+        <button type="submit">Delete this item</button>
+    </form>
+      <% }); %>
+    </ul>
     <% } %>
   </body>
 </html>

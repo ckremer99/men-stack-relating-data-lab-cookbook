@@ -48,4 +48,19 @@ router.delete('/:itemId', async (req, res) => {
   }
 })
 
+router.get('/:itemId/edit', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id)
+    const currentFood = currentUser.pantry.id(req.params.itemId)
+    res.render('foods/edit.ejs', {
+      user: req.session.user,
+      currentFood: currentFood
+    })
+
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
 module.exports = router;
